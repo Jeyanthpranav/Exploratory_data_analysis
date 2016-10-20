@@ -13,6 +13,7 @@ finalData <- plotData[plotData$Date %in% c("1/2/2007","2/2/2007"),]
 SetTime <-strptime(paste(finalData$Date, finalData$Time, sep=" "),"%d/%m/%Y %H:%M:%S")
 finalData <- cbind(SetTime, finalData)
 
+png("plot4.png", width=480, height=480)
 par(mfrow = c(2, 2))
 
 # plot 1 (NW)
@@ -35,3 +36,5 @@ legend("topright", lty = 1, col = c("black", "red", "blue"), legend = c("Sub_met
 # plot 4 (SE)
 plot(finalData$SetTime, finalData$Global_reactive_power, type = "l", xlab = "datetime", 
     ylab = "Global_reactive_power", ylim = c(0, 0.5))
+	
+dev.off()
